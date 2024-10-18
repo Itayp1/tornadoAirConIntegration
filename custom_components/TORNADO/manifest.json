@@ -1,0 +1,10 @@
+{
+  "domain": "TORNADO",
+  "name": "tornadoAirCon",
+  "documentation": "https://github.com/itayp1/tornadoAirConIntegration",
+  "issue_tracker": "https://github.com/itayp1/tornadoAirConIntegration/issues",
+  "dependencies": [],
+  "config_flow": true,
+  "codeowners": ["@itayp1"],
+  "requirements": []
+}
