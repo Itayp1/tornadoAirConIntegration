@@ -6,11 +6,14 @@ from homeassistant.components.climate.const import (
     HVAC_MODE_OFF,
     SUPPORT_FAN_MODE,
     SUPPORT_TARGET_TEMPERATURE,
-    SUPPORT_PRESET_MODE,
-    SUPPORT_TURN_ON,
-    SUPPORT_TURN_OFF
+    SUPPORT_PRESET_MODE
 
 )
+# from homeassistant.components.climate.const import (
+#     SUPPORT_TARGET_TEMPERATURE, SUPPORT_FAN_MODE, SUPPORT_SWING_MODE,
+#     SUPPORT_PRESET_MODE, PRESET_NONE, PRESET_ECO, PRESET_BOOST)
+
+# SUPPORT_FLAGS = SUPPORT_TARGET_TEMPERATURE | SUPPORT_FAN_MODE | SUPPORT_SWING_MODE | SUPPORT_PRESET_MODE
 from .const import DOMAIN
 
 from homeassistant.const import TEMP_CELSIUS, ATTR_TEMPERATURE
@@ -36,6 +39,7 @@ class TornadoClimat(TornadoEntity ,ClimateEntity):
         self._temperature_unit = TEMP_CELSIUS
         self._fan_mode = "auto"
         self._preset_mode = None
+        self._support_flags = SUPPORT_FLAGS
 
         self._hvac_modes = [HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_COOL, HVAC_MODE_AUTO]
         self._fan_modes = ["auto", "silent", "low", "medium", "high"]
@@ -73,7 +77,7 @@ class TornadoClimat(TornadoEntity ,ClimateEntity):
     @property
     def supported_features(self):
         """Return the list of supported features."""
-        return SUPPORT_TARGET_TEMPERATURE | SUPPORT_FAN_MODE | SUPPORT_PRESET_MODE | SUPPORT_TURN_ON | SUPPORT_TURN_OFF
+        return SUPPORT_TARGET_TEMPERATURE | SUPPORT_FAN_MODE | SUPPORT_PRESET_MODE 
     
 
     @property
