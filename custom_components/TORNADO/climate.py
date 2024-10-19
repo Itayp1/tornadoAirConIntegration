@@ -45,11 +45,7 @@ class TornadoClimat(TornadoEntity ,ClimateEntity):
         self._attr_coordinator = cord
         self._attr_entry = entry
         self._attr_preset_modes = ['ECO' ,'NORMAL']
-        self._attr_supported_features =  [
-            SUPPORT_TARGET_TEMPERATURE,
-            SUPPORT_FAN_MODE,
-            SUPPORT_PRESET_MODE
-        ]
+        self._attr_supported_features =  (SUPPORT_TARGET_TEMPERATURE | SUPPORT_FAN_MODE | SUPPORT_PRESET_MODE)
  
 
 
