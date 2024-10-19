@@ -30,7 +30,7 @@ async def async_setup_entry(hass, entry, async_add_devices):
 class TornadoClimat(TornadoEntity ,ClimateEntity):
     """Representation of a custom climate entity."""
 
-    def __init__(self):
+    def __init__(self , cord ,entry):
         """Initialize the climate device."""
         self._name = "My Climate Device"
         self._hvac_mode = HVAC_MODE_OFF
@@ -39,11 +39,10 @@ class TornadoClimat(TornadoEntity ,ClimateEntity):
         self._temperature_unit = TEMP_CELSIUS
         self._fan_mode = "auto"
         self._preset_mode = None
-        self._support_flags = SUPPORT_FLAGS
-
         self._hvac_modes = [HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_COOL, HVAC_MODE_AUTO]
         self._fan_modes = ["auto", "silent", "low", "medium", "high"]
- 
+        self._coordinator = cord
+        self._entry = entry
     @property
     def name(self):
         """Return the name of the climate device."""
