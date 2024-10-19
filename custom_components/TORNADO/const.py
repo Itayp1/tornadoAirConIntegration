@@ -20,7 +20,7 @@ SENSOR = "sensor"
 SWITCH = "switch"
 CLIMATE = "climate"  # New platform for climate devices
 
-PLATFORMS = [BINARY_SENSOR, SENSOR, SWITCH ,CLIMATE]
+PLATFORMS = [CLIMATE]
 
 
 # Configuration and options

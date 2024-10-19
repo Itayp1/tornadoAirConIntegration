@@ -14,7 +14,7 @@ from homeassistant.components.climate.const import (
 from homeassistant.const import TEMP_CELSIUS, ATTR_TEMPERATURE
 from .entity import TornadoEntity
 
-class MyClimateEntity(TornadoEntity , ClimateEntity):
+class MyClimateEntity(TornadoEntity ,ClimateEntity):
     """Representation of a custom climate entity."""
 
     def __init__(self):
