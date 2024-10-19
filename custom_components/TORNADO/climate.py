@@ -6,9 +6,12 @@ from homeassistant.components.climate.const import (
     HVAC_MODE_OFF,
     SUPPORT_FAN_MODE,
     SUPPORT_TARGET_TEMPERATURE,
-    SUPPORT_PRESET_MODE
+    SUPPORT_PRESET_MODE , 
+    ClimateEntityFeature ,
+    HVACMode
 
 )
+
 # from homeassistant.components.climate.const import (
 #     SUPPORT_TARGET_TEMPERATURE, SUPPORT_FAN_MODE, SUPPORT_SWING_MODE,
 #     SUPPORT_PRESET_MODE, PRESET_NONE, PRESET_ECO, PRESET_BOOST)
@@ -40,13 +43,19 @@ class TornadoClimat(TornadoEntity ,ClimateEntity):
         self._attr_temperature_unit = TEMP_CELSIUS
         self._attr_fan_mode = "auto"
         self._attr_preset_mode = None
-        self._attr_hvac_modes = [HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_COOL, HVAC_MODE_AUTO]
+        self._attr_hvac_modes = [HVACMode.OFF, HVACMode.HEAT, HVACMode.COOL, HVACMode.AUTO]
         self._attr_fan_modes = ["auto", "silent", "low", "medium", "high"]
         self._attr_coordinator = cord
         self._attr_entry = entry
         self._attr_preset_modes = ['ECO' ,'NORMAL']
-        self._attr_supported_features =  (SUPPORT_TARGET_TEMPERATURE | SUPPORT_FAN_MODE | SUPPORT_PRESET_MODE)
- 
+        # Using the ClimateEntityFeature IntFlag enum
+        self._attr_supported_features = (
+            ClimateEntityFeature.TARGET_TEMPERATURE |
+            ClimateEntityFeature.FAN_MODE |
+            ClimateEntityFeature.TURN_OFF   |
+            ClimateEntityFeature.TURN_ON  |
+            ClimateEntityFeature.PRESET_MODE
+        )
 
 
 
