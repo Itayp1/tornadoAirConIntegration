@@ -11,10 +11,20 @@ from homeassistant.components.climate.const import (
     SUPPORT_TURN_OFF
 
 )
+from .const import DOMAIN
+
 from homeassistant.const import TEMP_CELSIUS, ATTR_TEMPERATURE
 from .entity import TornadoEntity
 
-class MyClimateEntity(TornadoEntity ,ClimateEntity):
+
+async def async_setup_entry(hass, entry, async_add_devices):
+    """Setup sensor platform."""
+    coordinator = hass.data[DOMAIN][entry.entry_id]
+    async_add_devices([TornadoClimat(coordinator, entry)])
+
+
+
+class TornadoClimat(TornadoEntity ,ClimateEntity):
     """Representation of a custom climate entity."""
 
     def __init__(self):
