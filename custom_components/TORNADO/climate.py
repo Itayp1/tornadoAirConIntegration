@@ -44,6 +44,7 @@ class TornadoClimat(TornadoEntity ,ClimateEntity):
         self._fan_modes = ["auto", "silent", "low", "medium", "high"]
         self._coordinator = cord
         self._entry = entry
+        self._attr_preset_modes = ['ECO' ,'NORMAL']
     @property
     def name(self):
         """Return the name of the climate device."""
