@@ -26,11 +26,11 @@ from .entity import TornadoEntity
 async def async_setup_entry(hass, entry, async_add_devices):
     """Setup sensor platform."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    async_add_devices([TornadoClimat(coordinator, entry)])
+    async_add_devices([TornadoClimate(coordinator, entry)])
 
 
 
-class TornadoClimat(TornadoEntity ,ClimateEntity):
+class TornadoClimate(TornadoEntity ,ClimateEntity):
     """Representation of a custom climate entity."""
 
     def __init__(self , cord ,entry):
@@ -68,14 +68,14 @@ class TornadoClimat(TornadoEntity ,ClimateEntity):
 
     async def async_set_hvac_mode(self, hvac_mode):
         """Set the HVAC mode."""
-        if hvac_mode in self._attr_hvac_mode:
-            self._hvac_mode = hvac_mode
+        if hvac_mode in self._attr_hvac_modes:
+            self._attr_hvac_mode = hvac_mode  # Use _attr_hvac_mode for consistency
             self.async_write_ha_state()
 
     async def async_set_fan_mode(self, fan_mode):
         """Set the fan mode."""
         if fan_mode in self._attr_fan_modes:
-            self._fan_mode = fan_mode
+            self._attr_fan_mode = fan_mode  # Use _attr_fan_mode for consistency
             self.async_write_ha_state()
 
 
