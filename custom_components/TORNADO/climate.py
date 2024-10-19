@@ -32,6 +32,7 @@ class TornadoClimat(TornadoEntity ,ClimateEntity):
 
     def __init__(self , cord ,entry):
         """Initialize the climate device."""
+        super().__init__(cord,entry)        
         self._name = "My Climate Device"
         self._hvac_mode = HVAC_MODE_OFF
         self._current_temperature = 26.0
